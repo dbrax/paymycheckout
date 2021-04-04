@@ -8,20 +8,20 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://wopay.com
+ * @link              https://woopayments.com
  * @since             1.0.0
  * @package           Wopay
  *
  * @wordpress-plugin
  * Plugin Name:       Wopay
- * Plugin URI:        http://wopayments.com/wopay
+ * Plugin URI:        https://wopayments.com/wopay
  * Description:       Wordpress Online Payment Plugin.
  * Version:           1.0.0
  * Author:            woopayments
- * Author URI:        http://example.com/
+ * Author URI:        http://wopayments.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       plugin-name
+ * Text Domain:       wopay
  * Domain Path:       /languages
  */
 
@@ -35,34 +35,34 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'WOPAY_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
+ * This action is documented in includes/class-wopay-activator.php
  */
-function activate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-activator.php';
-	Plugin_Name_Activator::activate();
+function activate_wopay() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wopay-activator.php';
+	wopay_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
+ * This action is documented in includes/class-wopay-deactivator.php
  */
-function deactivate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+function deactivate_wopay() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wopay-deactivator.php';
+	wopay_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_plugin_name' );
-register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+register_activation_hook( __FILE__, 'activate_wopay' );
+register_deactivation_hook( __FILE__, 'deactivate_wopay' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-wopay.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +73,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
  *
  * @since    1.0.0
  */
-function run_plugin_name() {
+function run_wopay() {
 
-	$plugin = new Plugin_Name();
+	$plugin = new wopay();
 	$plugin->run();
 
 }
-run_plugin_name();
+run_wopay();
