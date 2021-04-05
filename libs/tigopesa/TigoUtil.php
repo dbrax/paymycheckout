@@ -51,6 +51,8 @@ class TigoUtil
   }
 
 
+  //:TODO currency and endpoints should be given as parameters
+
     /**
      * @param $amount
      * @param $refecence_id
@@ -62,7 +64,7 @@ class TigoUtil
      * funciton that creates payment authentication json
      */
 
-  public function createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email)
+  public function createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id)
   {
 
     //$transaction_number=transaction::where('id','>',1)->count();
@@ -71,9 +73,9 @@ class TigoUtil
 
     $paymentJson = '{
   "MasterMerchant": {
-    "account": "' . config('tigosecure.account_number') . '",
-    "pin": "' . config('tigosecure.pin') . '",
-    "id": "' . config('tigosecure.account_id') . '"
+    "account": "' . $account_number . '",
+    "pin": "' . $account_pin. '",
+    "id": "' . $account_id . '"
   },
   "Merchant": {
     "reference": "",
@@ -88,20 +90,20 @@ class TigoUtil
     "lastName": "' . $custormer_lastname . '",
     "emailId": "' . $customer_email . '"
   },
-  "redirectUri":" ' . config('tigosecure.redirect_url') . '",
-  "callbackUri": "' . config('tigosecure.callback_url') . '",
-  "language": "' . config('tigosecure.lang') . '",
+  "redirectUri":" ' .$redirect_url. '",
+  "callbackUri": "' .$callback_url. '",
+  "language": "' . "sw" . '",
   "terminalId": "",
   "originPayment": {
-    "amount": "300.00",
-    "currencyCode": "' . config('tigosecure.currency_code') . '",
+    "amount": "'.$amount.'",
+    "currencyCode": "TZS",
     "tax": "0.00",
     "fee": "0.00"
   },
   "exchangeRate": "1",
   "LocalPayment": {
-    "amount": "300.00",
-    "currencyCode": "' . config('tigosecure.currency_code') . '"
+    "amount": "'.$amount.'",
+    "currencyCode": "TZS"
   },
   "transactionRefId": "' . $refecence_id . '"
 }';
@@ -109,9 +111,7 @@ class TigoUtil
     return $paymentJson;
 
 
-    Log::info('TigoUtil::createPaymentAuthJson Token=' . $paymentJson);
 
-    return $paymentJson;
   }
 
 
@@ -128,13 +128,12 @@ class TigoUtil
      * Tigo secure payment call function using endpoint /v1/tigo/payment-auth/authorize
      */
 
-  public function makePaymentRequest(string $base_url, $issuedToken, $amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email)
+  public function makePaymentRequest(string $base_url, $issuedToken, $amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id)
   {
 
     $access_token_url = $base_url . "/v1/tigo/payment-auth/authorize";
 
     //update transaction table about this transaction..
-    Log::info('TigoUtil::makePaymentRequest Token');
 
     $paymentAuthUrl =  $access_token_url;
     $ch = curl_init($paymentAuthUrl);
@@ -146,7 +145,7 @@ class TigoUtil
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => $this->createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email),
+      CURLOPT_POSTFIELDS => $this->createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id),
       CURLOPT_HTTPHEADER => array(
         "accesstoken:" . $issuedToken,
         "cache-control: no-cache",
@@ -155,10 +154,8 @@ class TigoUtil
     ));
 
     $response = curl_exec($ch);
-    //$info = curl_getinfo($ch);
-    //  $http_result = $info ['http_code'];
+   
     curl_close($ch);
-    Log::info('TigoUtil::makePaymentRequest response=' . $response);
 
     return $response;
   }

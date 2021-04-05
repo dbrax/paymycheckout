@@ -65,6 +65,8 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
 	// We need custom JavaScript to obtain a token
 	//add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
  
+    $this->load_dependencies();
+
 
 
     }
@@ -171,24 +173,75 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
 	return true;
     }
 
+
+    private function load_dependencies()
+    {
+        require_once plugin_dir_path(dirname(__FILE__)) . 'libs/tigopesa/TigoUtil.php';
+    }
+
+
     /*
              * We're processing the payments here, everything about it is in Step 5
              */
     public function process_payment($order_id)
     {
 
+        global $woocommerce;
+ 
+        // we need it to get any order detailes
+        $order = wc_get_order( $order_id );
+ 
+
+        $clientid=$this->get_option( 'tigopesa_client_id' );
+        $clientpin=$this->get_option( 'tigopesa_pin' );
+        $account_number=$this->get_option( 'tigopesa_account_number' );
+        $account_id=$this->get_option( 'tigopesa_account_id' );
+        $client_secret=$this->get("tigopesa_client_secret"); 
+
+        $api=new Tigosecure($clientid, $client_secret, $account_id, $clientpin, $account_number, "", "", "sw", "TZS", $environment = "live");
+        $response=$api->make_payment("emmanuel", "mnzava", "epmnzava@gmail.com", "1000", $order_id);
 
 
-
-
-
-
-
-
-
-
-
+        if( !is_wp_error( $response ) ) {
+ 
+            $body = json_decode( $response['body'], true );
+    
+            // it could be different depending on your payment processor
+            if ( $body['response']['responseCode'] == 'APPROVED' ) {
+    
+               // we received the payment
+               $order->payment_complete();
+               $order->reduce_order_stock();
+    
+               // some notes to customer (replace true with false to make it private)
+               $order->add_order_note( 'Hey, your order is paid! Thank you!', true );
+    
+               // Empty cart
+               $woocommerce->cart->empty_cart();
+    
+               // Redirect to the thank you page
+               return array(
+                   'result' => 'success',
+                   'redirect' => $this->get_return_url( $order )
+               );
+    
+            } else {
+               wc_add_notice(  'Please try again.', 'error' );
+               return;
+           }
+    
+       } else {
+           wc_add_notice(  'Connection error.', 'error' );
+           return;
+       }
         
+     
+
+
+
+
+
+
     }
 
     /*
