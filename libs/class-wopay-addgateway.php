@@ -65,7 +65,7 @@ class wopay_gateway {
 
     public function wopay_gateways($gateways ){
 		$gateways[] = 'Wc_wopay_tigopesa_gateway'; // your class name is here
-		array_push($gateways,'Wc_wopay_mpesa_gateway');
+	//	array_push($gateways,'Wc_wopay_mpesa_gateway');
 	return $gateways;
 
     }
@@ -78,7 +78,7 @@ class wopay_gateway {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/Wc_wopay_mpesa_gateway.php';
 
 		$gateway_init=new Wc_wopay_tigopesa_gateway();
-		$gateway_init=new Wc_wopay_mpesa_gateway();
+		//$gateway_init=new Wc_wopay_mpesa_gateway();
 
 
         }
