@@ -10,12 +10,12 @@
  *
  * @link              https://woopayments.com
  * @since             1.0.0
- * @package           Wopay
+ * @package           wopay
  *
  * @wordpress-plugin
- * Plugin Name:       Wopay
+ * Plugin Name:       wopay
  * Plugin URI:        https://wopayments.com/wopay
- * Description:       Wordpress Online Payment Plugin.
+ * Description:       Wordpress mobile money Online Payment Plugin.
  * Version:           1.0.0
  * Author:            woopayments
  * Author URI:        http://wopayments.com/

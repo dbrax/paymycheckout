@@ -78,7 +78,7 @@ class wopay {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
+		$this->register_plugin_gateway();
 	}
 
 	/**
@@ -122,9 +122,30 @@ class wopay {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wopay-public.php';
 
+		/**
+		 * 
+		 * The class responsible for registering payment gateway
+		 * 
+		 */
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/class-wopay-addgateway.php';
+
+
+
 		$this->loader = new wopay_Loader();
 
 	}
+
+	private function register_plugin_gateway(){
+
+		$plugin_gateway=new wopay_gateway($this->get_wopay(), $this->get_version());
+		$this->loader->add_filter('woocommerce_payment_gateways',$plugin_gateway,'wopay_gateways');
+		$this->loader->add_action('plugins_loaded',$plugin_gateway,'wopay_init_gateway_class');
+
+	
+	
+	}
+
 
 	/**
 	 * Define the locale for this plugin for internationalization.

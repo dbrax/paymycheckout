@@ -30,6 +30,7 @@ class wopay_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+		// my deactication logic here
 
 	}
 

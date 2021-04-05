@@ -31,6 +31,7 @@ class wopay_Activator {
 	 */
 	public static function activate() {
 
+		//My Activation logic here ...
 	}
 
 }
