@@ -95,12 +95,28 @@ class Tigosecure
     public function make_payment($customer_firstname, $customer_lastname, $customer_email, $amount, $reference_id)
     {
 
+        $this->write_log("redirect ".$this->redirect_url);
+
+        $this->write_log("callback ".$this->callback_url);
+
         $this->access_token();
         $api = new TigoUtil();
         $base_url = $this->baseurl;
-        $response = $api->makePaymentRequest($base_url, $this->issuedToken, $amount, $reference_id, $customer_firstname, $customer_lastname, $customer_email, $this->client_id, $this->client_secret, $this->account_number, $this->account_pin, $this->account_id);
+        $response = $api->makePaymentRequest($base_url, $this->issuedToken, $amount, $reference_id, $customer_firstname, $customer_lastname, $customer_email, $this->redirect_url, $this->callback_url, $this->account_number, $this->account_pin, $this->account_id,$this->lang);
 
         return json_decode($response);
+    }
+
+
+    private function write_log($log)
+    {
+        if (true === WP_DEBUG) {
+            if (is_array($log) || is_object($log)) {
+                error_log(print_r($log, true));
+            } else {
+                error_log($log);
+            }
+        }
     }
 
     /**

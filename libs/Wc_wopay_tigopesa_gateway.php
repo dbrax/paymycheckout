@@ -59,14 +59,16 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
         $this->publishable_key = $this->testmode ? $this->get_option('test_publishable_key') : $this->get_option('publishable_key');
 
 
-    $this->webhookname="paymentcomplete";
+        $this->webhookname = "paymentcomplete";
 
         // This action hook saves the settings
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
 
         // We need custom JavaScript to obtain a token
         //add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
-        add_action( 'woocommerce_api_'.$this->webhookname, array( $this, 'webhook' ) );
+        add_action('woocommerce_api_' . $this->webhookname, array($this, 'webhook'));
+        //do_action( 'woocommerce_api_'.$this->webhookname );
+
         $this->load_dependencies();
     }
 
@@ -78,27 +80,7 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
         $this->tigopesa_fields();
     }
 
-    public function mpesa_fields()
-    {
-        $this->form_fields = array(
-            'enabled' => array(
-                'title'       => 'Enable/Disable',
-                'label'       => 'Enable Tigopesa Secure Gateway',
-                'type'        => 'checkbox',
-                'description' => '',
-                'default'     => 'no'
-            ),
-            'title' => array(
-                'title'       => 'Title',
-                'type'        => 'text',
-                'description' => 'This controls the title which the user sees during checkout.',
-                'default'     => 'Mpesa',
-                'desc_tip'    => true,
-            ),
 
-
-        );
-    }
 
 
     public function tigopesa_fields()
@@ -131,14 +113,6 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
                 'description' => 'Place the payment gateway in test mode using test API keys.',
                 'default'     => 'yes',
                 'desc_tip'    => true,
-            ),
-            'test_publishable_key' => array(
-                'title'       => 'Test Publishable Key',
-                'type'        => 'text'
-            ),
-            'test_private_key' => array(
-                'title'       => 'Test Private Key',
-                'type'        => 'password',
             ),
 
             'tigopesa_client_id' => array(
@@ -232,9 +206,10 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
         $account_id = $this->get_option('tigopesa_account_id');
         $client_secret = $this->get_option("tigopesa_client_secret");
         $transaction_id = $this->random_reference("TIGOPESA" . $order_id, 10);
+        $lang = "en";
 
-        $this->write_log(get_site_url()."?wc-api/paymentcomplete");
-        $api = new Tigosecure($clientid, $client_secret, $account_id, $clientpin, $account_number,get_site_url()."?wc-api/paymentcomplete", get_site_url()."?wc-api/paymentcomplete", "sw", "TZS", $environment = "live");
+        $this->write_log(get_site_url() . "?wc-api/paymentcomplete");
+        $api = new Tigosecure($clientid, $client_secret, $account_id, $clientpin, $account_number, get_site_url() . "?wc-api/paymentcomplete", get_site_url() . "?wc-api/paymentcomplete", $lang, "TZS", $environment = "live");
         $response = $api->make_payment($customer_firstname, $customer_lastname, $customer_email,  $amount, $transaction_id);
 
         //logging the response here ..
@@ -300,15 +275,17 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
     public function webhook()
     {
 
-        header( 'HTTP/1.1 200 OK' );
-        echo "callback".json_encode($_GET);
+        header('HTTP/1.1 200 OK');
+        echo "callback" . json_encode($_GET);
 
-        
-        
+
+
+
+
         //$order = wc_get_order( $_GET['id'] );
-	//$order->payment_complete();
-	//$order->reduce_order_stock();
- 
-	//update_option('webhook_debug', $_GET);
+        //$order->payment_complete();
+        //$order->reduce_order_stock();
+
+        //update_option('webhook_debug', $_GET);
     }
 }

@@ -64,7 +64,7 @@ class TigoUtil
      * funciton that creates payment authentication json
      */
 
-  public function createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id)
+  public function createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id,$lang)
   {
 
     //$transaction_number=transaction::where('id','>',1)->count();
@@ -92,7 +92,7 @@ class TigoUtil
   },
   "redirectUri":" ' .$redirect_url. '",
   "callbackUri": "' .$callback_url. '",
-  "language": "' . "sw" . '",
+  "language": "' .$lang. '",
   "terminalId": "",
   "originPayment": {
     "amount": "'.$amount.'",
@@ -128,12 +128,13 @@ class TigoUtil
      * Tigo secure payment call function using endpoint /v1/tigo/payment-auth/authorize
      */
 
-  public function makePaymentRequest(string $base_url, $issuedToken, $amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id)
+  public function makePaymentRequest(string $base_url, $issuedToken, $amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id,$lang)
   {
 
     $access_token_url = $base_url . "/v1/tigo/payment-auth/authorize";
 
     //update transaction table about this transaction..
+    $this->write_log("makePaymentRequest :::  ".$this->createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id,$lang));
 
     $paymentAuthUrl =  $access_token_url;
     $ch = curl_init($paymentAuthUrl);
@@ -145,7 +146,7 @@ class TigoUtil
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => $this->createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id),
+      CURLOPT_POSTFIELDS => $this->createPaymentAuthJson($amount, $refecence_id, $customer_firstname, $custormer_lastname, $customer_email,$redirect_url,$callback_url,$account_number,$account_pin,$account_id,$lang),
       CURLOPT_HTTPHEADER => array(
         "accesstoken:" . $issuedToken,
         "cache-control: no-cache",
@@ -159,4 +160,18 @@ class TigoUtil
 
     return $response;
   }
+
+  private function write_log($log)
+  {
+      if (true === WP_DEBUG) {
+          if (is_array($log) || is_object($log)) {
+              error_log(print_r($log, true));
+          } else {
+              error_log($log);
+          }
+      }
+  }
+
+
+  
 }

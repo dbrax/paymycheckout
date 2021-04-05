@@ -38,7 +38,7 @@ class Wc_wopay_mpesa_gateway extends WC_Payment_Gateway
         $this->id = 'wopay-mpesa'; // payment gateway plugin ID
         $this->icon = ''; // URL of the icon that will be displayed on checkout page near your gateway name
         $this->has_fields = true; // in case you need a custom credit card form
-        $this->method_title = 'Wopay Gateway';
+        $this->method_title = 'Wopay Gateway (coming soon)';
         $this->method_description = 'An online wordpress payment gateway'; // will be displayed on the options page
 
         // gateways can support subscriptions, refunds, saved payment methods,
@@ -62,11 +62,11 @@ class Wc_wopay_mpesa_gateway extends WC_Payment_Gateway
         $this->webhookname = "paymentcomplete";
 
         // This action hook saves the settings
-        add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
+       // add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
 
         // We need custom JavaScript to obtain a token
         //add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
-        add_action('woocommerce_api_' . $this->webhookname, array($this, 'webhook'));
+      //  add_action('woocommerce_api_' . $this->webhookname, array($this, 'webhook'));
         $this->load_dependencies();
     }
 
