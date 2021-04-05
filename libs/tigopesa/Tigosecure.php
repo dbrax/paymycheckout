@@ -28,7 +28,7 @@ class Tigosecure
 
     //private $issuedToken;
 
-    public string $base_url,
+    public  $base_url,
         $issuedToken,
         $customer_firstname,
         $customer_lastname,
@@ -64,7 +64,7 @@ class Tigosecure
 
     private function load_dependencies()
     {
-        require_once plugin_dir_path(dirname(__FILE__)) . 'libs/tigopesa/TigoUtil.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . '/tigopesa/TigoUtil.php';
     }
 
 
@@ -75,9 +75,9 @@ class Tigosecure
     {
 
         $api = new TigoUtil();
-        $tokenArray = json_decode($api->get_access_token($this->base_url, $this->client_id, $this->client_secret));
+        $tokenArray = json_decode($api->get_access_token($this->baseurl, $this->client_id, $this->client_secret));
         $this->issuedToken = $tokenArray->accessToken;
-        
+
         // $tokenArray = json_decode($api->get_access_token(config('tigosecure.api_url')));
         //$this->issuedToken = $tokenArray->accessToken;
     }
