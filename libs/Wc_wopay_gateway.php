@@ -70,10 +70,78 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
     }
 
     /**
-     * Plugin options, we deal with it in Step 3 too
+     * Plugin options, these are settings
      */
     public function init_form_fields()
     {
+        $this->form_fields = array(
+            'enabled' => array(
+                'title'       => 'Enable/Disable',
+                'label'       => 'Enable Tigopesa Secure Gateway',
+                'type'        => 'checkbox',
+                'description' => '',
+                'default'     => 'no'
+            ),
+            'title' => array(
+                'title'       => 'Title',
+                'type'        => 'text',
+                'description' => 'This controls the title which the user sees during checkout.',
+                'default'     => 'Tigopesa',
+                'desc_tip'    => true,
+            ),
+            'description' => array(
+                'title'       => 'Description',
+                'type'        => 'textarea',
+                'description' => 'This controls the description which the user sees during checkout.',
+                'default'     => 'Pay with  Tigopesa',
+            ),
+            'testmode' => array(
+                'title'       => 'Test mode',
+                'label'       => 'Enable Test Mode',
+                'type'        => 'checkbox',
+                'description' => 'Place the payment gateway in test mode using test API keys.',
+                'default'     => 'yes',
+                'desc_tip'    => true,
+            ),
+            'test_publishable_key' => array(
+                'title'       => 'Test Publishable Key',
+                'type'        => 'text'
+            ),
+            'test_private_key' => array(
+                'title'       => 'Test Private Key',
+                'type'        => 'password',
+            ),
+
+             'tigopesa_client_id' => array(
+                'title'       => 'Client Id',
+                'type'        => 'text'
+            ),
+            'tigopesa_client_secret' => array(
+                'title'       => 'Client Secret',
+                'type'        => 'text'
+            ),
+            'tigopesa_pin' => array(
+                'title'       => 'Tigo Pin',
+                'type'        => 'text'
+            ),
+
+            'tigopesa_account_number' => array(
+                'title'       => 'Tigo Account Number',
+                'type'        => 'text'
+            ),
+            
+
+            'tigopesa_account_id' => array(
+                'title'       => 'Tigo Account Id',
+                'type'        => 'text'
+            ),
+
+
+
+    
+        );
+
+
     }
 
     /**
@@ -95,6 +163,12 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
              */
     public function validate_fields()
     {
+
+	if( empty( $_POST[ 'billing_first_name' ]) ) {
+		wc_add_notice(  'First name is required!', 'error' );
+		return false;
+	}
+	return true;
     }
 
     /*
