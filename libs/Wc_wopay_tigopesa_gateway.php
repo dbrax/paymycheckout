@@ -24,51 +24,50 @@
  * @subpackage wopay/libs
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class Wc_wopay_gateway extends WC_Payment_Gateway
+class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
 {
 
+
+    private $webhookname;
     /**
      * Class constructor
      */
     public function __construct()
     {
 
-    $this->id = 'wopay'; // payment gateway plugin ID
-	$this->icon = ''; // URL of the icon that will be displayed on checkout page near your gateway name
-	$this->has_fields = true; // in case you need a custom credit card form
-	$this->method_title = 'Wopay Gateway';
-	$this->method_description = 'An online wordpress payment gateway'; // will be displayed on the options page
- 
-	// gateways can support subscriptions, refunds, saved payment methods,
-	// but in this tutorial we begin with simple payments
-	$this->supports = array(
-		'products'
-	);
- 
-	// Method with all the options fields
-    $this->init_form_fields();
+        $this->id = 'wopay'; // payment gateway plugin ID
+        $this->icon = ''; // URL of the icon that will be displayed on checkout page near your gateway name
+        $this->has_fields = true; // in case you need a custom credit card form
+        $this->method_title = 'Wopay Gateway';
+        $this->method_description = 'An online wordpress payment gateway'; // will be displayed on the options page
 
-	// Load the settings.
-	$this->init_settings();
-	$this->title = $this->get_option( 'title' );
-	$this->description = $this->get_option( 'description' );
-	$this->testmode = 'yes' === $this->get_option( 'testmode' );
-	$this->private_key = $this->testmode ? $this->get_option( 'test_private_key' ) : $this->get_option( 'private_key' );
-	$this->publishable_key = $this->testmode ? $this->get_option( 'test_publishable_key' ) : $this->get_option( 'publishable_key' );
- 
+        // gateways can support subscriptions, refunds, saved payment methods,
+        // but in this tutorial we begin with simple payments
+        $this->supports = array(
+            'products'
+        );
 
+        // Method with all the options fields
+        $this->init_form_fields();
+
+        // Load the settings.
+        $this->init_settings();
+        $this->title = $this->get_option('title');
+        $this->description = $this->get_option('description');
+        $this->testmode = 'yes' === $this->get_option('testmode');
+        $this->private_key = $this->testmode ? $this->get_option('test_private_key') : $this->get_option('private_key');
+        $this->publishable_key = $this->testmode ? $this->get_option('test_publishable_key') : $this->get_option('publishable_key');
 
 
-    	// This action hook saves the settings
-	add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
- 
-	// We need custom JavaScript to obtain a token
-	//add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
- 
-    $this->load_dependencies();
+    $this->webhookname="paymentcomplete";
 
+        // This action hook saves the settings
+        add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
 
-
+        // We need custom JavaScript to obtain a token
+        //add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
+        add_action( 'woocommerce_api_'.$this->webhookname, array( $this, 'webhook' ) );
+        $this->load_dependencies();
     }
 
     /**
@@ -77,10 +76,10 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
     public function init_form_fields()
     {
         $this->tigopesa_fields();
-
     }
 
-    public function mpesa_fields(){
+    public function mpesa_fields()
+    {
         $this->form_fields = array(
             'enabled' => array(
                 'title'       => 'Enable/Disable',
@@ -96,13 +95,14 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
                 'default'     => 'Mpesa',
                 'desc_tip'    => true,
             ),
-        
-        
+
+
         );
-        }
+    }
 
 
-    public function tigopesa_fields(){
+    public function tigopesa_fields()
+    {
         $this->form_fields = array(
             'enabled' => array(
                 'title'       => 'Enable/Disable',
@@ -141,7 +141,7 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
                 'type'        => 'password',
             ),
 
-             'tigopesa_client_id' => array(
+            'tigopesa_client_id' => array(
                 'title'       => 'Client Id',
                 'type'        => 'text'
             ),
@@ -158,7 +158,7 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
                 'title'       => 'Tigo Account Number',
                 'type'        => 'text'
             ),
-            
+
 
             'tigopesa_account_id' => array(
                 'title'       => 'Tigo Account Id',
@@ -167,9 +167,8 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
 
 
 
-    
-        );
 
+        );
     }
     /**
      * You will need it if you want your custom credit card form, Step 4 is about it
@@ -191,11 +190,11 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
     public function validate_fields()
     {
 
-	if( empty( $_POST[ 'billing_first_name' ]) ) {
-		wc_add_notice(  'First name is required!', 'error' );
-		return false;
-	}
-	return true;
+        if (empty($_POST['billing_first_name'])) {
+            wc_add_notice('First name is required!', 'error');
+            return false;
+        }
+        return true;
     }
 
 
@@ -212,70 +211,58 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
     {
 
         global $woocommerce;
- 
+
         // we need it to get any order detailes
-        $order = wc_get_order( $order_id );
-     
-
-        $customer_firstname=$order->get_billing_first_name();
- 
-        $customer_lastname=$order->get_billing_last_name();
-        $company=$order->get_billing_company();
-        
-        $customer_phone_number=$order->get_billing_phone();
-        $customer_email=$order->get_billing_email();
-        $amount=$order->get_total();
+        $order = wc_get_order($order_id);
 
 
-        $clientid=$this->get_option( 'tigopesa_client_id' );
-        $clientpin=$this->get_option( 'tigopesa_pin' );
-        $account_number=$this->get_option( 'tigopesa_account_number' );
-        $account_id=$this->get_option( 'tigopesa_account_id' );
-        $client_secret=$this->get_option("tigopesa_client_secret"); 
-        $transaction_id=$this->random_reference("TIGOPESA".$order_id,10);
+        $customer_firstname = $order->get_billing_first_name();
 
-        $api=new Tigosecure($clientid, $client_secret, $account_id, $clientpin, $account_number, "", "", "sw", "TZS", $environment = "live");
-        $response=$api->make_payment($customer_firstname, $customer_lastname, $customer_email,  $amount, $transaction_id);
+        $customer_lastname = $order->get_billing_last_name();
+        $company = $order->get_billing_company();
+
+        $customer_phone_number = $order->get_billing_phone();
+        $customer_email = $order->get_billing_email();
+        $amount = $order->get_total();
+
+
+        $clientid = $this->get_option('tigopesa_client_id');
+        $clientpin = $this->get_option('tigopesa_pin');
+        $account_number = $this->get_option('tigopesa_account_number');
+        $account_id = $this->get_option('tigopesa_account_id');
+        $client_secret = $this->get_option("tigopesa_client_secret");
+        $transaction_id = $this->random_reference("TIGOPESA" . $order_id, 10);
+
+        $this->write_log(get_site_url()."?wc-api/paymentcomplete");
+        $api = new Tigosecure($clientid, $client_secret, $account_id, $clientpin, $account_number,get_site_url()."?wc-api/paymentcomplete", get_site_url()."?wc-api/paymentcomplete", "sw", "TZS", $environment = "live");
+        $response = $api->make_payment($customer_firstname, $customer_lastname, $customer_email,  $amount, $transaction_id);
 
         //logging the response here ..
         $this->write_log(json_encode($response));
 
-        if( !is_wp_error( $response ) ) {
-          //  {"transactionRefId":"TIGOPESA12EEOMBXGRAT","redirectUrl":"https:\/\/secure.tigo.com\/v1\/tigo\/payment-auth\/transactions?auth_code=6o8wjKFQfQ&transaction_ref_id=TIGOPESA12EEOMBXGRAT&lang=swa","authCode":"6o8wjKFQfQ","creationDateTime":"Mon, 5 Apr 2021 11:42:05 UTC","SessionLife":600}
-           
-          
-          
-            $this->write_log(json_encode($response ));
+        if (!is_wp_error($response)) {
+            //  {"transactionRefId":"TIGOPESA12EEOMBXGRAT","redirectUrl":"https:\/\/secure.tigo.com\/v1\/tigo\/payment-auth\/transactions?auth_code=6o8wjKFQfQ&transaction_ref_id=TIGOPESA12EEOMBXGRAT&lang=swa","authCode":"6o8wjKFQfQ","creationDateTime":"Mon, 5 Apr 2021 11:42:05 UTC","SessionLife":600}
+
+
+
+            $this->write_log(json_encode($response));
 
             // it could be different depending on your payment processor
-            if ( $response->transactionRefId==$transaction_id) {
-    
+            if ($response->transactionRefId == $transaction_id) {
+
 
                 return array(
                     'result' => 'success',
                     'redirect' => $response->redirectUrl
                 );
-              
-             
-               
-    
             } else {
-               wc_add_notice(  'Please try again.', 'error' );
-               return;
-           }
-    
-       } else {
-           wc_add_notice(  'Connection error.', 'error' );
-           return;
-       }
-        
-     
-
-
-
-
-
-
+                wc_add_notice('Please try again.', 'error');
+                return;
+            }
+        } else {
+            wc_add_notice('Connection error.', 'error');
+            return;
+        }
     }
 
     private function random_reference($prefix = 'TIGOPESA', $length = 15)
@@ -295,21 +282,33 @@ class Wc_wopay_gateway extends WC_Payment_Gateway
 
 
 
- private function write_log($log) {
-            if (true === WP_DEBUG) {
-                if (is_array($log) || is_object($log)) {
-                    error_log(print_r($log, true));
-                } else {
-                    error_log($log);
-                }
+    private function write_log($log)
+    {
+        if (true === WP_DEBUG) {
+            if (is_array($log) || is_object($log)) {
+                error_log(print_r($log, true));
+            } else {
+                error_log($log);
             }
         }
-    
+    }
+
 
     /*
              * In case you need a webhook, like PayPal IPN etc
              */
     public function webhook()
     {
+
+        header( 'HTTP/1.1 200 OK' );
+        echo "callback".json_encode($_GET);
+
+        
+        
+        //$order = wc_get_order( $_GET['id'] );
+	//$order->payment_complete();
+	//$order->reduce_order_stock();
+ 
+	//update_option('webhook_debug', $_GET);
     }
 }
