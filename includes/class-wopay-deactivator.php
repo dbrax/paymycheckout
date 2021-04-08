@@ -3,11 +3,11 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://example.com
+ * @link       https://woopayments.com
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    wopay
+ * @subpackage wopay/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    wopay
+ * @subpackage wopay/includes
+ * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class Plugin_Name_Deactivator {
+class wopay_Deactivator {
 
 	/**
 	 * Short Description. (use period)
@@ -30,6 +30,7 @@ class Plugin_Name_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+		// my deactication logic here
 
 	}
 
