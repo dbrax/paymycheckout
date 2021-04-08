@@ -2,11 +2,7 @@
 
 <p align="center"><a href="https://github.com/dbrax/wopay"><img src="https://github.com/dbrax/wopay/blob/main/assets/wopay.png" alt="Wopay"></a></p>
 
-<p align="center">
-<a href="https://packagist.org/packages/woocommerce/woocommerce"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a> 
-<a href="https://packagist.org/packages/woocommerce/woocommerce"><img src="https://poser.pugx.org/woocommerce/woocommerce/v/stable" alt="Latest Stable Version"></a>
 
-</p>
 
 Welcome to the Wopay repository on GitHub. Here you can browse the source, look at open issues and keep track of development. 
 
