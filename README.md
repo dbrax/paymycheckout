@@ -6,8 +6,12 @@
 
 Welcome to the Wopay repository on GitHub. Here you can browse the source, look at open issues and keep track of development. 
 
+Wopay is unified mobile money payment gateway plugin that extends functionality of wordpress and  woocommerce to ensure that merchants can receive money using mobile payments such as mpesa , tigopesa etc.
 
-## Payment Gateway Supported
+On the current release we support tigopesa as a payment gateway on woocommerce future release we will be supporting mpesa , airtel money etc. Your welcome to be part of this journey by contributing to it's development contribution guides will be up soon. 
+
+
+## Payment Gateway Supported v1.0.0
 - Tigopesa 
 
 ## Reporting Security Issues
