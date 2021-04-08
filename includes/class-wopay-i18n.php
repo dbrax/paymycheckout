@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://woopayments.com
+ * @link       https://github.com/dbrax/wopay
  * @since      1.0.0
  *
  * @package    wopay

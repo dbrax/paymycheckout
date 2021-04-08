@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://woopayments.com
+ * @link       https://github.com/dbrax/wopay
  * @since      1.0.0
  *
  * @package    wopay
@@ -20,7 +20,8 @@
  * @subpackage wopay/admin
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class wopay_Admin {
+class wopay_Admin
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +48,11 @@ class wopay_Admin {
 	 * @param      string    $wopay       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $wopay, $version ) {
+	public function __construct($wopay, $version)
+	{
 
 		$this->wopay = $wopay;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +60,8 @@ class wopay_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +75,7 @@ class wopay_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->wopay, plugin_dir_url( __FILE__ ) . 'css/wopay-admin.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style($this->wopay, plugin_dir_url(__FILE__) . 'css/wopay-admin.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +83,8 @@ class wopay_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,8 +98,6 @@ class wopay_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->wopay, plugin_dir_url( __FILE__ ) . 'js/wopay-admin.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script($this->wopay, plugin_dir_url(__FILE__) . 'js/wopay-admin.js', array('jquery'), $this->version, false);
 	}
-
 }

@@ -3,7 +3,7 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://woopayments.com
+ * @link       https://github.com/dbrax/wopay
  * @since      1.0.0
  *
  * @package    wopay
@@ -20,18 +20,17 @@
  * @subpackage wopay/includes
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class wopay_Activator {
+class wopay_Activator
+{
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {
+	public static function activate()
+	{
 
 		//My Activation logic here ...
+		//currently we are not using any interface nor database etc
 	}
-
 }

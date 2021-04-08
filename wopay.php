@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://epmnzava.medium.com
+ * @link              https://github.com/dbrax/wopay
  * @since             1.0.0
  * @package           wopay
  *
@@ -19,8 +19,8 @@
  * Version:           1.0.0
  * Author:            Emmanuel Mnzava
  * Author URI:        https://epmnzava.medium.com
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GPLv3
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Requires at least: 5.4
  * Requires PHP: 7.0
  * Text Domain:       wopay

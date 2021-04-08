@@ -5,7 +5,7 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       https://woopayments.com
+ * @link       https://github.com/dbrax/wopay
  * @since      1.0.0
  *
  * @package    wopay

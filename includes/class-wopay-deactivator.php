@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       https://woopayments.com
+ * @link       https://github.com/dbrax/wopay
  * @since      1.0.0
  *
  * @package    wopay
@@ -23,14 +23,12 @@
 class wopay_Deactivator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
 	 *
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
 		// my deactication logic here
+		//currently we have no interfaces or database etc hence nothing to deactivate as a logic
 
 	}
 

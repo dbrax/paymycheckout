@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://woopayments.com
+ * @link       https://github.com/dbrax/wopay
  * @since      1.0.0
  *
  * @package    wopay
@@ -13,12 +13,9 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the public-facing stylesheet and JavaScript.
- *
  * @package    wopay
  * @subpackage wopay/public
- * @author     Your Name <epmnzava@gmail.com>
+ * @author     Emmanuel Paul Mnzava <epmnzava@gmail.com>
  */
 class wopay_Public {
 
