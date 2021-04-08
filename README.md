@@ -7,9 +7,12 @@
 Welcome to the Wopay repository on GitHub. Here you can browse the source, look at open issues and keep track of development. 
 
 
+## Payment Gateway Supported
+- Tigopesa 
 
 ## Reporting Security Issues
 To disclose a security issue to our team,Please an email to epmnzava@gmail.com.
+
 
 
 ## Contributing to Wopay
