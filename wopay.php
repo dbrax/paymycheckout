@@ -8,19 +8,21 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://wopayments.com
+ * @link              https://epmnzava.medium.com
  * @since             1.0.0
  * @package           wopay
  *
  * @wordpress-plugin
  * Plugin Name:       wopay
- * Plugin URI:        https://wopayments.com/wopay
- * Description:       Wordpress mobile money Online Payment Plugin.
+ * Plugin URI:        
+ * Description:       Wordpress (Woocommerce) mobile money Online Payment Plugin.Note You can only use this plugin with woocommerce
  * Version:           1.0.0
- * Author:            wopayments
- * Author URI:        http://wopayments.com/
+ * Author:            Emmanuel Mnzava
+ * Author URI:        https://epmnzava.medium.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Requires at least: 5.4
+ * Requires PHP: 7.0
  * Text Domain:       wopay
  * Domain Path:       /languages
  */
