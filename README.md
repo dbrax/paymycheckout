@@ -1,6 +1,6 @@
 
 
-<p align="center"><a href=""><img src="https://woocommerce.com/wp-content/themes/woo/images/logo-woocommerce@2x.png" alt="WooCommerce"></a></p>
+<p align="center"><a href=""><img src="https://github.com/dbrax/wopay/blob/main/assets/wopay.png" alt="Wopay"></a></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/woocommerce/woocommerce"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a> 
@@ -24,7 +24,7 @@ If you have a patch or have stumbled upon an issue with Wopay, you can contribut
 
 <p align="center">
     <br/><br/>
-    Made with 💜 by <a href="">WooCommerce</a>
+    Made with 💜 by <a href="">Wopay</a>
 </p>
 
 
