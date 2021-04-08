@@ -16,7 +16,7 @@ To disclose a security issue to our team,Please an email to epmnzava@gmail.com.
 
 
 ## Contributing to Wopay
-If you have a patch or have stumbled upon an issue with Wopay, you can contribute this back to the code. Please read our [contributor guidelines](https://github.com/wopay/woocommerce/blob/trunk/.github/CONTRIBUTING.md) for more information how you can do this.
+If you have a patch or have stumbled upon an issue with Wopay, you can contribute this back to the code. Please read our [contributor guidelines](https://github.com/dbrax/wopay/blob/main/CONTRIBUTING.md) for more information how you can do this.
 
 <p align="center">
     <br/><br/>
