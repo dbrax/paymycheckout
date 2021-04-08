@@ -1,6 +1,6 @@
 
 
-<p align="center"><a href=""><img src="https://github.com/dbrax/wopay/blob/main/assets/wopay.png" alt="Wopay"></a></p>
+<p align="center"><a href="https://github.com/dbrax/wopay"><img src="https://github.com/dbrax/wopay/blob/main/assets/wopay.png" alt="Wopay"></a></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/woocommerce/woocommerce"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a> 
@@ -16,7 +16,7 @@ Welcome to the Wopay repository on GitHub. Here you can browse the source, look 
 
 
 ## Reporting Security Issues
-To disclose a security issue to our team, [please submit a report via email here](https://mailto:epmnzava@gmail.com).
+To disclose a security issue to our team,Please an email to epmnzava@gmail.com.
 
 
 ## Contributing to Wopay
@@ -24,7 +24,7 @@ If you have a patch or have stumbled upon an issue with Wopay, you can contribut
 
 <p align="center">
     <br/><br/>
-    Made with 💜 by <a href="">Wopay</a>
+    Made with 💜 by <a href="https://github.com/dbrax/wopay">Wopay</a>
 </p>
 
 
