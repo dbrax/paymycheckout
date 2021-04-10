@@ -3,6 +3,7 @@ Contributors: dbrax
 Tags: e-commerce, payment gateways, tigopesa, mpesa, woo, shop, cart, checkout, downloadable, downloads, payments, woo commerce
 Requires at least: 5.4
 Woocommerce at least: 5.1
+Donate link:https://donorbox.org/wopay-plugin-development 
 Tested up to: 5.7
 Requires PHP: 7.0
 Stable tag: 1.0.0
@@ -45,8 +46,21 @@ e.g.
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Place `<?php do_action('Wopay_hook'); ?>` in your templates
 
+== Frequently Asked Questions ==
+
+= Does wopay only work with woocommerce =
+
+Yes this particular plugin only works with woocommerce we creating a plugin that won't need woocommerce.
+
+== Screenshots ==
 
 
+1. Field Options 
+2. Checkout selection
+
+== Upgrade Notice ==
+
+= 1.0.0 (8 April 2021) =
 
 == Changelog ==
 
