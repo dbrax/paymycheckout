@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://github.com/dbrax/wopay
+ * @link              https://wordpress.org/plugins/wopay 
  * @since             1.0.0
  * @package           wopay
  *
