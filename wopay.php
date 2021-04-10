@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       wopay
  * Plugin URI:        
- * Description:       Wordpress (Woocommerce) mobile money Online Payment Plugin.Note You can only use this plugin with woocommerce
+ * Description:       This is a simple Mobile Money (Tigopesa) WooCommerce payment gateway that allows customers to send the shop owner the payment on mobile phone number.
  * Version:           1.0.0
  * Author:            Emmanuel Mnzava
  * Author URI:        https://epmnzava.medium.com
