@@ -18,7 +18,7 @@
  * Description:       This is a simple Mobile Money (Tigopesa) WooCommerce payment gateway that allows customers to send the shop owner the payment on mobile phone number.
  * Version:           1.0.0
  * Author:            Emmanuel Mnzava
- * Author URI:        https://epmnzava.medium.com
+ * Author URI:        https://profiles.wordpress.org/epmnzava
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Requires at least: 5.4
