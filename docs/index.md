@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/dbrax/wopay/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<p align="center"><a href="https://github.com/dbrax/wopay"><img src="https://github.com/dbrax/wopay/blob/main/assets/wopay.png" alt="Wopay"></a></p>
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+Welcome to the Wopay repository on GitHub. Here you can browse the source, look at open issues and keep track of development. 
 
-# Header 1
-## Header 2
-### Header 3
+Wopay is unified mobile money payment gateway plugin that extends functionality of wordpress and  woocommerce to ensure that merchants can receive money using mobile payments such as mpesa , tigopesa etc.
 
-- Bulleted
-- List
+On the current release we support tigopesa as a payment gateway on woocommerce future release we will be supporting mpesa , airtel money etc. Your welcome to be part of this journey by contributing to it's development contribution guides will be up soon. 
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+## Payment Gateway Supported v1.0.0
+- Tigopesa 
 
-[Link](url) and ![Image](src)
-```
+## Reporting Security Issues
+To disclose a security issue to our team,Please an email to epmnzava@gmail.com.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dbrax/wopay/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Contributing to Wopay
+If you have a patch or have stumbled upon an issue with Wopay, you can contribute this back to the code. Please read our [contributor guidelines](https://github.com/dbrax/wopay/blob/main/CONTRIBUTING.md) for more information how you can do this.
 
-### Support or Contact
+<p align="center">
+    <br/><br/>
+    Made with 💜 by <a href="https://github.com/dbrax/wopay">Wopay</a>
+</p>
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
