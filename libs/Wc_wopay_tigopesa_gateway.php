@@ -277,15 +277,10 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
 
         header('HTTP/1.1 200 OK');
         echo "callback" . json_encode($_GET);
+        $order = wc_get_order( $_GET['id'] );
+        $order->payment_complete();
+        $order->reduce_order_stock();
 
-
-
-
-
-        //$order = wc_get_order( $_GET['id'] );
-        //$order->payment_complete();
-        //$order->reduce_order_stock();
-
-        //update_option('webhook_debug', $_GET);
+        update_option('webhook_debug', $_GET);
     }
 }

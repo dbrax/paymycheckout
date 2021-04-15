@@ -1,0 +1,18 @@
+{
+    "name": "epmnzava/wopay",
+    "description": "Online wordpress-woocommerce mobile money payment plugin",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "dbrax",
+            "email": "epmnzava@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0|>=8.0",
+        "automattic/jetpack-autoloader": "2.10.1",
+        "epmnzava/pesapal": "^1.0"
+      }
+}
