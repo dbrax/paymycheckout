@@ -1,4 +1,6 @@
 
+Due to Demand this plugin is currently getting a revamp to add more gateways and MNO'S.
+
 
 <p align="center"><a href="https://github.com/dbrax/wopay"><img src="https://github.com/dbrax/wopay/blob/main/assets/wopay.png" alt="Wopay"></a></p>
 
