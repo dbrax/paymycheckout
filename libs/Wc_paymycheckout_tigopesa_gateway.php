@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://github.com/dbrax/wopay
+ * @link       https://github.com/dbrax/paymycheckout
  * @since      1.0.0
  *
- * @package    wopay
- * @subpackage wopay/libs
+ * @package    paymycheckout
+ * @subpackage paymycheckout/libs
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    wopay
- * @subpackage wopay/libs
+ * @package    paymycheckout
+ * @subpackage paymycheckout/libs
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
+class Wc_paymycheckout_tigopesa_gateway extends WC_Payment_Gateway
 {
 
 
@@ -35,10 +35,10 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
     public function __construct()
     {
 
-        $this->id = 'wopay'; // payment gateway plugin ID
+        $this->id = 'paymycheckout'; // payment gateway plugin ID
         $this->icon = ''; // URL of the icon that will be displayed on checkout page near your gateway name
         $this->has_fields = true; // in case you need a custom credit card form
-        $this->method_title = 'Wopay Gateway';
+        $this->method_title = 'paymycheckout Gateway';
         $this->method_description = 'An online wordpress payment gateway'; // will be displayed on the options page
 
         // gateways can support subscriptions, refunds, saved payment methods,
@@ -277,7 +277,7 @@ class Wc_wopay_tigopesa_gateway extends WC_Payment_Gateway
 
         header('HTTP/1.1 200 OK');
         echo "callback" . json_encode($_GET);
-        $order = wc_get_order( $_GET['id'] );
+        $order = wc_get_order($_GET['id']);
         $order->payment_complete();
         $order->reduce_order_stock();
 

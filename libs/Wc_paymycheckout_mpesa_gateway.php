@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://github.com/dbrax/wopay
+ * @link       https://github.com/dbrax/paymycheckout
  * @since      1.0.0
  *
- * @package    wopay
- * @subpackage wopay/libs
+ * @package    paymycheckout
+ * @subpackage paymycheckout/libs
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    wopay
- * @subpackage wopay/libs
+ * @package    paymycheckout
+ * @subpackage paymycheckout/libs
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class Wc_wopay_mpesa_gateway extends WC_Payment_Gateway
+class Wc_paymycheckout_mpesa_gateway extends WC_Payment_Gateway
 {
 
 
@@ -35,40 +35,40 @@ class Wc_wopay_mpesa_gateway extends WC_Payment_Gateway
     public function __construct()
     {
 
-       
-       // $this->id = 'wopay-mpesa'; // payment gateway plugin ID
-       // $this->icon = ''; // URL of the icon that will be displayed on checkout page near your gateway name
-       // $this->has_fields = true; // in case you need a custom credit card form
-       // $this->method_title = 'Wopay Gateway (coming soon)';
-       // $this->method_description = 'An online wordpress payment gateway'; // will be displayed on the options page
+
+        // $this->id = 'paymycheckout-mpesa'; // payment gateway plugin ID
+        // $this->icon = ''; // URL of the icon that will be displayed on checkout page near your gateway name
+        // $this->has_fields = true; // in case you need a custom credit card form
+        // $this->method_title = 'paymycheckout Gateway (coming soon)';
+        // $this->method_description = 'An online wordpress payment gateway'; // will be displayed on the options page
 
         // gateways can support subscriptions, refunds, saved payment methods,
         // but in this tutorial we begin with simple payments
         //$this->supports = array(
-      //      'products'
-       // );
+        //      'products'
+        // );
 
         // Method with all the options fields
-       // $this->init_form_fields();
+        // $this->init_form_fields();
 
         // Load the settings.
-       // $this->init_settings();
-       // $this->title = $this->get_option('title');
-       // $this->description = $this->get_option('description');
-       // $this->testmode = 'yes' === $this->get_option('testmode');
-       // $this->private_key = $this->testmode ? $this->get_option('test_private_key') : $this->get_option('private_key');
-       // $this->publishable_key = $this->testmode ? $this->get_option('test_publishable_key') : $this->get_option('publishable_key');
+        // $this->init_settings();
+        // $this->title = $this->get_option('title');
+        // $this->description = $this->get_option('description');
+        // $this->testmode = 'yes' === $this->get_option('testmode');
+        // $this->private_key = $this->testmode ? $this->get_option('test_private_key') : $this->get_option('private_key');
+        // $this->publishable_key = $this->testmode ? $this->get_option('test_publishable_key') : $this->get_option('publishable_key');
 
 
         // $this->webhookname = "paymentcomplete";
 
         // This action hook saves the settings
-       // add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
+        // add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
 
         // We need custom JavaScript to obtain a token
         //add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
-      //  add_action('woocommerce_api_' . $this->webhookname, array($this, 'webhook'));
-      //  $this->load_dependencies();
+        //  add_action('woocommerce_api_' . $this->webhookname, array($this, 'webhook'));
+        //  $this->load_dependencies();
     }
 
     /**
