@@ -17,17 +17,16 @@
  * general skeleton and outline for how the file should work.
  *
  *
- * @link       http://wopayments.com
+ * @link       https://paymycheckout.com
  * @since      1.0.0
  *
- * @package    wopays
+ * @package    paymycheckout
  */
 
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (!defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
-}
-else{
-//write unistall scripts here ..
+} else {
+	//write unistall scripts here ..
 
 }

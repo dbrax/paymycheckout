@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * The plugin bootstrap file
  *
@@ -8,12 +9,12 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://wordpress.org/plugins/wopay 
+ * @link              https://wordpress.org/plugins/paymycheckout 
  * @since             1.0.0
- * @package           wopay
+ * @package           paymycheckout
  *
  * @wordpress-plugin
- * Plugin Name:       wopay
+ * Plugin Name:       paymycheckout
  * Plugin URI:        
  * Description:       This is a simple Mobile Money (Tigopesa) WooCommerce payment gateway that allows customers to send the shop owner the payment on mobile phone number.
  * Version:           1.0.0
@@ -23,7 +24,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Requires at least: 5.4
  * Requires PHP: 7.0
- * Text Domain:       wopay
+ * Text Domain:       paymycheckout
  * Domain Path:       /languages
  */
 
@@ -37,36 +38,36 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WOPAY_VERSION', '1.0.0');
+define('paymycheckout_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-wopay-activator.php
+ * This action is documented in includes/class-paymycheckout-activator.php
  */
-function activate_wopay()
+function activate_paymycheckout()
 {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-wopay-activator.php';
-	wopay_Activator::activate();
+	require_once plugin_dir_path(__FILE__) . 'includes/class-paymycheckout-activator.php';
+	paymycheckout_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-wopay-deactivator.php
+ * This action is documented in includes/class-paymycheckout-deactivator.php
  */
-function deactivate_wopay()
+function deactivate_paymycheckout()
 {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-wopay-deactivator.php';
-	wopay_Deactivator::deactivate();
+	require_once plugin_dir_path(__FILE__) . 'includes/class-paymycheckout-deactivator.php';
+	paymycheckout_Deactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_wopay');
-register_deactivation_hook(__FILE__, 'deactivate_wopay');
+register_activation_hook(__FILE__, 'activate_paymycheckout');
+register_deactivation_hook(__FILE__, 'deactivate_paymycheckout');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'includes/class-wopay.php';
+require plugin_dir_path(__FILE__) . 'includes/class-paymycheckout.php';
 
 /**
  * Begins execution of the plugin.
@@ -77,10 +78,10 @@ require plugin_dir_path(__FILE__) . 'includes/class-wopay.php';
  *
  * @since    1.0.0
  */
-function run_wopay()
+function run_paymycheckout()
 {
 
-	$plugin = new wopay();
+	$plugin = new paymycheckout();
 	$plugin->run();
 }
-run_wopay();
+run_paymycheckout();

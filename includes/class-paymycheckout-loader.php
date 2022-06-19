@@ -3,11 +3,11 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       https://github.com/dbrax/wopay
+ * @link       https://github.com/dbrax/paymycheckout
  * @since      1.0.0
  *
- * @package    wopay
- * @subpackage wopay/includes
+ * @package    paymycheckout
+ * @subpackage paymycheckout/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    wopay
- * @subpackage wopay/includes
+ * @package    paymycheckout
+ * @subpackage paymycheckout/includes
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class wopay_Loader
+class paymycheckout_Loader
 {
 
 	/**

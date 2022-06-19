@@ -5,11 +5,11 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://github.com/dbrax/wopay
+ * @link       https://github.com/dbrax/paymycheckout
  * @since      1.0.0
  *
- * @package    wopay
- * @subpackage wopay/public/partials
+ * @package    paymycheckout
+ * @subpackage paymycheckout/public/partials
  */
 ?>
 

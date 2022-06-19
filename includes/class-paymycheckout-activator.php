@@ -3,11 +3,11 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://github.com/dbrax/wopay
+ * @link       https://github.com/dbrax/paymycheckout
  * @since      1.0.0
  *
- * @package    wopay
- * @subpackage wopay/includes
+ * @package    paymycheckout
+ * @subpackage paymycheckout/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    wopay
- * @subpackage wopay/includes
+ * @package    paymycheckout
+ * @subpackage paymycheckout/includes
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class wopay_Activator
+class paymycheckout_Activator
 {
 
 	/**

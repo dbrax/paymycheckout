@@ -1,16 +1,16 @@
-=== Wopay ===
+=== paymycheckout ===
 Contributors: dbrax
 Tags: e-commerce, payment gateways, tigopesa, mpesa, woo, shop, cart, checkout, downloadable, downloads, payments, woo commerce
 Requires at least: 5.4
 Woocommerce at least: 5.1
-Donate link:https://donorbox.org/wopay-plugin-development 
+Donate link:https://donorbox.org/paymycheckout-plugin-development 
 Tested up to: 5.7
 Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Wopay is a unified mobile money payment gateway to be used in woocommerce plugin.Helps merchants to receive money seemlessly using mobile money ( Tigopesa , Mpesa and Airtel Money)
+paymycheckout is a unified mobile money payment gateway to be used in woocommerce plugin.Helps merchants to receive money seemlessly using mobile money ( Tigopesa , Mpesa and Airtel Money)
 == Description ==
 
 Wordpress and woocommerce users and developers can use this plugin to ensure that their stores can receive money through mobile payments gateways such as tigopesa and mpesa.
@@ -42,13 +42,13 @@ This section describes how to install the plugin and get it working.
 
 e.g.
 
-1. Upload `Wopay.php` to the `/wp-content/plugins/` directory
+1. Upload `paymycheckout.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('Wopay_hook'); ?>` in your templates
+1. Place `<?php do_action('paymycheckout_hook'); ?>` in your templates
 
 == Frequently Asked Questions ==
 
-= Does wopay only work with woocommerce =
+= Does paymycheckout only work with woocommerce =
 
 Yes this particular plugin only works with woocommerce we creating a plugin that won't need woocommerce.
 
