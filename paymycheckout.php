@@ -10,14 +10,14 @@
  * that starts the plugin.
  *
  * @link              https://wordpress.org/plugins/paymycheckout 
- * @since             1.0.0
+ * @since             1.0.1
  * @package           paymycheckout
  *
  * @wordpress-plugin
  * Plugin Name:       paymycheckout
  * Plugin URI:        
  * Description:       This is a simple Mobile Money (Tigopesa) WooCommerce payment gateway that allows customers to send the shop owner the payment on mobile phone number.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Emmanuel Mnzava
  * Author URI:        https://profiles.wordpress.org/epmnzava
  * License:           GPLv3
