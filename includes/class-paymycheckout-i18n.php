@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://github.com/dbrax/wopay
+ * @link       https://github.com/dbrax/paymycheckout
  * @since      1.0.0
  *
- * @package    wopay
- * @subpackage wopay/includes
+ * @package    paymycheckout
+ * @subpackage paymycheckout/includes
  */
 
 /**
@@ -20,11 +20,12 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    wopay
- * @subpackage wopay/includes
+ * @package    paymycheckout
+ * @subpackage paymycheckout/includes
  * @author     Emmanuel Mnzava <epmnzava@gmail.com>
  */
-class wopay_i18n {
+class paymycheckout_i18n
+{
 
 
 	/**
@@ -32,16 +33,13 @@ class wopay_i18n {
 	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function load_plugin_textdomain()
+	{
 
 		load_plugin_textdomain(
-			'wopay',
+			'paymycheckout',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
 		);
-
 	}
-
-
-
 }
