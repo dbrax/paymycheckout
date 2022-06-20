@@ -1,3 +1,5 @@
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
+
 Due to Demand this plugin is currently getting a revamp to add more gateways and MNO'S.
 
 Welcome to the Paymycheckout repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
