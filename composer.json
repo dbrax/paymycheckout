@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0|>=8.0",
+        "php": ">=7.0|>=8.0|>=8.1",
         "automattic/jetpack-autoloader": "2.10.1",
         "epmnzava/pesapal": "^1.0"
       }
